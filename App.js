@@ -28,6 +28,9 @@ const NotAuthStack = () => (
 		<Stack.Screen
 			name="SignUp"
 			component={Screens.SignUpScreen}
+			options={{
+				headerTitle: "Kullanıcı Kayıt",
+			}}
 		/>
 	</Stack.Navigator>
 );

@@ -4,18 +4,42 @@ import { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 
-export default function AuthForm({ login }) {
+export default function AuthForm({ login, onsubmit, credentialsInvalid }) {
 	const [enteredEmail, setEnteredEmail] = useState("");
+	const [enteredConfirmEmail, setEnteredConfirmEmail] = useState("");
 	const [enteredPassword, setEnteredPassword] = useState("");
+	const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
+
+	const {
+		email: emailIsInvalid,
+		confirmEmail: emailsDontMatch,
+		password: passwordIsInvalid,
+		confirmPassword: passwordsDontMatch,
+	} = credentialsInvalid;
 
 	const updateInput = (inputType, enteredValue) => {
 		switch (inputType) {
 			case "email":
 				setEnteredEmail(enteredValue);
 				break;
+			case "confirmEmail":
+				setEnteredConfirmEmail(enteredValue);
+				break;
 			case "password":
 				setEnteredPassword(enteredValue);
+				break;
+			case "confirmPassword":
+				setEnteredConfirmPassword(enteredValue);
 		}
+	};
+
+	const sumbitHandler = () => {
+		onsubmit({
+			email: enteredEmail,
+			confirmEmail: enteredConfirmEmail,
+			password: enteredPassword,
+			confirmPassword: enteredConfirmPassword,
+		});
 	};
 
 	return (
@@ -25,15 +49,37 @@ export default function AuthForm({ login }) {
 				value={enteredEmail}
 				keyboardType="email-address"
 				onUpdateValue={updateInput.bind(this, "email")}
+				isInvalid={emailIsInvalid}
 			/>
+			{!login && (
+				<Input
+					label="Emaili Doğrula"
+					value={enteredConfirmEmail}
+					keyboardType="email-address"
+					onUpdateValue={updateInput.bind(this, "confirmEmail")}
+					isInvalid={emailsDontMatch}
+				/>
+			)}
 			<Input
 				label="Şifre"
 				value={enteredPassword}
 				onUpdateValue={updateInput.bind(this, "password")}
 				secure
+				isInvalid={passwordIsInvalid}
 			/>
+			{!login && (
+				<Input
+					label="Şifreyi Doğrula"
+					value={enteredConfirmPassword}
+					onUpdateValue={updateInput.bind(this, "confirmPassword")}
+					secure
+					isInvalid={passwordsDontMatch}
+				/>
+			)}
 			<View style={styles.buttons}>
-				<Button>{login ? "Giriş Yap" : "Kayıt Ol"}</Button>
+				<Button onPress={sumbitHandler}>
+					{login ? "Giriş Yap" : "Kayıt Ol"}
+				</Button>
 			</View>
 		</View>
 	);
