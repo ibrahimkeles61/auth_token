@@ -1,14 +1,35 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Alert } from "react-native";
+import { useState, useContext } from "react";
 
 import * as Components from "../components/_index";
+import { AuthContext } from "../store/auth-context";
 
 import { createUser } from "../utils/auth";
 
-const signUpHandler = async ({ email, password }) =>
-	await createUser(email, password);
-
 export default function SignUpScreen() {
-	return <Components.AuthContent onAuthenticate={signUpHandler} />;
+	const [isAuthenticate, setIsAuthenticate] = useState(false);
+
+	const authContext = useContext(AuthContext);
+
+	const signUpHandler = async ({ email, password }) => {
+		setIsAuthenticate(true);
+
+		try {
+			const token = await createUser(email, password);
+
+			authContext.authenticate(token);
+		} catch (error) {
+			Alert.alert("Kayıt Olunamadı", "Lütfen Bilgilerinizi Kontrol Ediniz");
+		}
+
+		setIsAuthenticate(false);
+	};
+
+	return isAuthenticate ? (
+		<Components.Loading message="Kullanıcı Oluşturuluyor" />
+	) : (
+		<Components.AuthContent onAuthenticate={signUpHandler} />
+	);
 }
 
 const styles = StyleSheet.create({});
