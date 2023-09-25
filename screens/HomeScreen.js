@@ -2,8 +2,8 @@ import { StyleSheet, Text, View } from "react-native";
 export default function HomeScreen() {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Hoşgeldiniz!</Text>
-			<Text>Giriş Başarılı!</Text>
+			<Text style={styles.title}>Welcome!</Text>
+			<Text>Logged In Successfully!</Text>
 		</View>
 	);
 }

@@ -19,14 +19,14 @@ export default function SignUpScreen() {
 
 			authContext.authenticate(token);
 		} catch (error) {
-			Alert.alert("Kayıt Olunamadı", "Lütfen Bilgilerinizi Kontrol Ediniz");
+			Alert.alert("Register Failed", "Please check your informations..");
 		}
 
 		setIsAuthenticate(false);
 	};
 
 	return isAuthenticate ? (
-		<Components.Loading message="Kullanıcı Oluşturuluyor" />
+		<Components.Loading />
 	) : (
 		<Components.AuthContent onAuthenticate={signUpHandler} />
 	);

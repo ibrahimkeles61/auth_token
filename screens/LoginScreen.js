@@ -18,13 +18,13 @@ const LoginScreen = () => {
 
 			authContext.authenticate(token);
 		} catch (error) {
-			Alert.alert("Giriş Yapılamadı");
+			Alert.alert("Login Failed!");
 		}
 		setIsAuthenticate(false);
 	};
 
 	return isAuthenticate ? (
-		<Components.Loading message="Giriş Yapılıyor" />
+		<Components.Loading />
 	) : (
 		<Components.AuthContent
 			login

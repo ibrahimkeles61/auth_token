@@ -53,7 +53,7 @@ export default function AuthForm({ login, onsubmit, credentialsInvalid }) {
 			/>
 			{!login && (
 				<Input
-					label="Emaili Doğrula"
+					label="Confirm Email"
 					value={enteredConfirmEmail}
 					keyboardType="email-address"
 					onUpdateValue={updateInput.bind(this, "confirmEmail")}
@@ -61,7 +61,7 @@ export default function AuthForm({ login, onsubmit, credentialsInvalid }) {
 				/>
 			)}
 			<Input
-				label="Şifre"
+				label="Password"
 				value={enteredPassword}
 				onUpdateValue={updateInput.bind(this, "password")}
 				secure
@@ -69,7 +69,7 @@ export default function AuthForm({ login, onsubmit, credentialsInvalid }) {
 			/>
 			{!login && (
 				<Input
-					label="Şifreyi Doğrula"
+					label="Confirm Password"
 					value={enteredConfirmPassword}
 					onUpdateValue={updateInput.bind(this, "confirmPassword")}
 					secure
@@ -77,9 +77,7 @@ export default function AuthForm({ login, onsubmit, credentialsInvalid }) {
 				/>
 			)}
 			<View style={styles.buttons}>
-				<Button onPress={sumbitHandler}>
-					{login ? "Giriş Yap" : "Kayıt Ol"}
-				</Button>
+				<Button onPress={sumbitHandler}>{login ? "Login" : "Save"}</Button>
 			</View>
 		</View>
 	);

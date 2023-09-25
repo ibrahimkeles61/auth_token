@@ -33,7 +33,7 @@ export default function AuthContent({ login, onAuthenticate }) {
 			!passwordIsValid ||
 			(!login && (!emailsAreEqual || !passwordsAreEqual))
 		) {
-			Alert.alert("Ops! girdiğiniz değerleri kontrol edin");
+			Alert.alert("Please check your informations..");
 			setCredentialsInvalid({
 				email: !emailIsValid,
 				confirmEmail: !emailIsValid || !emailsAreEqual,
@@ -55,7 +55,7 @@ export default function AuthContent({ login, onAuthenticate }) {
 			/>
 			<View>
 				<ButtonWhite onPress={switchScreen}>
-					{login ? "Yeni Kullanıcı Oluştur" : "Giriş Yap"}
+					{login ? "Create An Account" : "Login"}
 				</ButtonWhite>
 			</View>
 		</View>

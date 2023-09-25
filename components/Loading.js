@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
-export default function Loading({ message }) {
+export default function Loading() {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>{message}</Text>
+			<Text style={styles.text}>Please Wait..</Text>
 			<ActivityIndicator size="large" />
 		</View>
 	);

@@ -26,14 +26,14 @@ const NotAuthStack = () => (
 			name="Login"
 			component={Screens.LoginScreen}
 			options={{
-				headerTitle: "Kullanıcı Giriş",
+				headerTitle: "Sign In",
 			}}
 		/>
 		<Stack.Screen
 			name="SignUp"
 			component={Screens.SignUpScreen}
 			options={{
-				headerTitle: "Kullanıcı Kayıt",
+				headerTitle: "Register",
 			}}
 		/>
 	</Stack.Navigator>
@@ -58,7 +58,7 @@ const AuthStack = () => {
 				name="Home"
 				component={Screens.HomeScreen}
 				options={{
-					headerTitle: "Ana Sayfa",
+					headerTitle: "Home Screen",
 					headerRight: ({ tintColor }) => (
 						<Pressable
 							style={({ pressed }) => pressed && styles.pressed}
