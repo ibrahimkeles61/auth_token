@@ -4,13 +4,13 @@ Bu projemde amacım yalnızca bir mobil uygulamanın kapatılıp tekrar açıld�
 
 ## Kullandığım Teknolojiler
 
-Authentication için; firebase.
+Authentication için: firebase.
 
-Uygulamanın token kaydetmesi için; async storage, kütüphanesi: react-native-async-storage/async-storage
+Uygulamanın token kaydetmesi için: async storage, kütüphanesi: react-native-async-storage/async-storage.
 
-Route: react-navigation/native , react-navigation/native-stack
+Route: react-navigation/native , react-navigation/native-stack.
 
-Veri çekmek için; Axios.
+Veri çekmek için: Axios.
 
 ## Tanıtım
 
